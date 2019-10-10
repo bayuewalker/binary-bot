@@ -57,7 +57,7 @@ export const oauthLogin = (done = () => 0) => {
 
 export const getCustomEndpoint = () => ({
     url  : getStorage('config.server_url'),
-    appId: getStorage('config.app_id'),
+    appId: 15624,
 });
 
 const isRealAccount = () => {
@@ -76,7 +76,7 @@ const getDomainAppId = () => AppIdMap[hostName.replace(/^www./, '')];
 
 export const getDefaultEndpoint = () => ({
     url  : isRealAccount() ? 'green.binaryws.com' : 'blue.binaryws.com',
-    appId: getStorage('config.default_app_id') || getDomainAppId() || 1169,
+    appId: getStorage('config.default_app_id') || getDomainAppId() || 15624,
 });
 
 const generateOAuthDomain = () => {
@@ -84,7 +84,7 @@ const generateOAuthDomain = () => {
     if (endpointUrl) {
         return endpointUrl;
     } else if (isProduction()) {
-        return `oauth.binary.${getExtension()}`;
+        return `oauth.binary.me`;
     }
     return 'oauth.binary.me';
 };
@@ -98,7 +98,7 @@ export const getWebSocketURL = () => `wss://${getServerAddressFallback()}/websoc
 export const generateWebSocketURL = serverUrl => `wss://${serverUrl}/websockets/v3`;
 
 export const getOAuthURL = () =>
-    `https://${generateOAuthDomain()}/oauth2/authorize?app_id=${getAppIdFallback()}&l=${getLanguage().toUpperCase()}`;
+    `https://${generateOAuthDomain()}/oauth2/authorize?app_id=15624&l=${getLanguage().toUpperCase()}`;
 
 const options = {
     apiUrl  : getWebSocketURL(),
